@@ -12,7 +12,7 @@
       <h4> <%= recipe.name %> </h4>
       <p> <%= truncate(recipe.description, length: 150) %> </p>
       <p>
-      <small><%= time_ago_in_words(recipe.created_at) %></small>
+      <span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %>ago </small></span>
     </p>
     </div>
   </div>
