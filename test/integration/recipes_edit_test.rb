@@ -2,7 +2,8 @@ require 'test_helper'
 
 class RecipesEditTest < ActionDispatch::IntegrationTest
   def setup
-    @chef = Chef.create!(chefname: "ken", email: "ken@examplel.com")
+    @chef = Chef.create!(chefname: "ken", email: "ken@examplel.com",
+                        password: "password", password_confirmation: "password")
     @recipe = Recipe.create(name: "vegetable saute", description: "greate vegetable saute, add vegetable and oil", chef: @chef)
   end
 
@@ -21,7 +22,7 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     updated_name = "updated recipe name"
     updated_description = "updated recipe description"
     patch recipe_path(@recipe), params: { recipe: { name: updated_name, description: updated_description } }
-    assert_redirected_to @recipe 
+    assert_redirected_to @recipe
     assert_not flash.empty?
     @recipe.reload
     assert_match updated_name, @recipe.name

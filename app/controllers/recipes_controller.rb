@@ -5,6 +5,7 @@ before_action :set_recipe, only: [:show, :edit, :update]
   end
 
   def show
+
   end
 
   def new
@@ -23,9 +24,11 @@ before_action :set_recipe, only: [:show, :edit, :update]
   end
 
   def edit
+
   end
 
   def update
+
     if @recipe.update(recipe_params)
       flash[:success] = "Recipe was updated successfully!"
       redirect_to recipe_path(@recipe)
